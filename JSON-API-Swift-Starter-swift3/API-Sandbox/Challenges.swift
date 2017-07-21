@@ -111,9 +111,11 @@ internal func exerciseThree() {
      
      */
     var allMovies: [Movie] = []
-    
-    
-    
+    var movie : Movie
+    for item in allMovies {
+        movie = Movie(json: moviesData)
+        print (movie)
+    }
     
     
     /*

@@ -95,6 +95,8 @@ internal func exerciseThree() {
         print("Could not find iTunes-Movies.json!")
         return
     }
+    
+    
     let jsonData = try! Data(contentsOf: jsonURL)
     
     // Enter SwiftyJSON!
@@ -111,11 +113,6 @@ internal func exerciseThree() {
      
      */
     var allMovies: [Movie] = []
-    var movie : Movie
-    for item in allMovies {
-        movie = Movie(json: moviesData)
-        print (movie)
-    }
     
     
     /*
@@ -126,7 +123,18 @@ internal func exerciseThree() {
      
      */
     print("The following movies are Disney movies:")
+    var disney: [String] = []
     
+    //problem with the for loop
+    for x in 0..<24 {
+        let i = allMoviesData[x]
+        let movies = Movie(json: i)
+        let rights = movies.rightsOwner
+        if rights.contains ("Disney") {
+            disney.append(movies.name)
+        }
+    }
+    print ("The following movies are Disney movies: \(disney) .")
     
     
     /*
@@ -135,7 +143,16 @@ internal func exerciseThree() {
      movie that costs less than $15. Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies are cost less than $15:")
+    var cheap: [(String, String)] = []
+    for x in 0..<24 {
+        let i = allMoviesData[x]
+        let movies = Movie(json: i)
+        let price = movies.price
+        if price < 15.00 {
+            cheap.append((movies.name, movies.actualPrice))
+        }
+    }
+    print("The following movies are cost less than $15: \(cheap)")
     
     
     
@@ -146,7 +163,17 @@ internal func exerciseThree() {
      each movie released in 2016. Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies were released in 2016:")
+    
+    var sixteen: [String] = []
+    for x in 0..<24 {
+        let i = allMoviesData[x]
+        let movies = Movie(json: i)
+        let release = movies.releaseDate
+        if release.contains ("2016") {
+            sixteen.append(movies.name)
+        }
+    }
+    print("The following movies were released in 2016: \(sixteen)")
     
     
     

@@ -24,12 +24,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
         exerciseOne()
         exerciseTwo()
         exerciseThree()
         
+        
         let apiToContact = "https://itunes.apple.com/us/rss/topmovies/limit=25/json"
-        // This code will call the iTunes top 25 movies endpoint listed above
+        // This code will call the iTunes top 25 movies endpoint listed above, by contacting iTunes via Alamofire and downloading the data as a JSON file
         Alamofire.request(apiToContact).validate().responseJSON() { response in
             switch response.result {
             case .success:

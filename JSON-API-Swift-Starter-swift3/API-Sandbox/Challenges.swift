@@ -164,13 +164,13 @@ internal func exerciseThree() {
      
      */
     
-    var sixteen: [String] = []
+    var sixteen: [(String, String)] = []
     for x in 0..<24 {
         let i = allMoviesData[x]
         let movies = Movie(json: i)
         let release = movies.releaseDate
         if release.contains ("2016") {
-            sixteen.append(movies.name)
+            sixteen.append((movies.name, movies.releaseDate))
         }
     }
     print("The following movies were released in 2016: \(sixteen)")
